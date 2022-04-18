@@ -1,0 +1,78 @@
+[
+  {
+    "model": "trucks.TruckModel",
+    "pk": 1,
+    "fields": {
+      "name": "БЕЛАЗ",
+      "cargo_capacity": 120
+    }
+  },
+  {
+    "model": "trucks.TruckModel",
+    "pk": 2,
+    "fields": {
+      "name": "“Komatsu",
+      "cargo_capacity": 110
+    }
+  },
+  {
+    "model": "trucks.Truck",
+    "pk": 1,
+    "fields": {
+      "model_id": 1,
+      "site_number": "101"
+    }
+  },
+  {
+    "model": "trucks.Truck",
+    "pk": 2,
+    "fields": {
+      "model_id": 1,
+      "site_number": "102"
+    }
+  },
+  {
+    "model": "trucks.Truck",
+    "pk": 3,
+    "fields": {
+      "model_id": 2,
+      "site_number": "K103"
+    }
+  },
+  {
+    "model": "trucks.Cargo",
+    "pk": 1,
+    "fields": {
+      "truck_id": 1,
+      "volume": 100,
+      "extras": {
+        "SiO2": 32,
+        "Fe": 67
+      }
+    }
+  },
+  {
+    "model": "trucks.Cargo",
+    "pk": 2,
+    "fields": {
+      "truck_id": 2,
+      "volume": 125,
+      "extras": {
+        "SiO2": 30,
+        "Fe": 65
+      }
+    }
+  },
+  {
+    "model": "trucks.Cargo",
+    "pk": 3,
+    "fields": {
+      "truck_id": 3,
+      "volume": 120,
+      "extras": {
+        "SiO2": 35,
+        "Fe": 62
+      }
+    }
+  }
+]

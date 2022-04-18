@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Название склада</th>
+                <th scope="col">Объем до разгрузки, т</th>
+                <th scope="col">Объем после разгрузки, т</th>
+                <th scope="col">Качественные хар-ки после разгрузки</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{ shipment_log.stock.name }}</th>
+                <td>{{ shipment_log.balance_before }}</td>
+                <td>{{ shipment_log.balance_after }}</td>
+                <td>
+                    {% if shipment_log.cargo_extras %}
+                        {% for key, value in shipment_log.cargo_extras.items %}
+                            {{ value }}% {{ key }}{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

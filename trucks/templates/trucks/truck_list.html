@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">бортовой номер</th>
+                <th scope="col">модель</th>
+                <th scope="col">макс. грузоподъемность</th>
+                <th scope="col">текущий вес</th>
+                <th scope="col">перегруз, %</th>
+                <th scope="col">координаты выгрузки (x, y)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for truck in truck_list %}
+                <tr>
+                    <th scope="row">{{ truck.site_number }}</th>
+                    <td>{{ truck.model.name }}</td>
+                    <td>{{ truck.model.cargo_capacity }}</td>
+                    <td>{{ truck.cargo.volume }}</td>
+                    <td>{{ truck.cargo.overload_volume }}</td>
+                    <td>
+                        <form method="POST" action="{% url 'ship_cargo_from_truck' truck_id=truck.id %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input id="id_x_coord" style="width: 20px" class="form-control" name="x_coord"/>
+                                <input id="is_y_coord" style="width: 20px" class="form-control" name="y_coord"/>
+                                <button type="submit"
+                                        class="btn btn-primary {% if truck.cargo.volume == 0 %}disabled{% endif %}">
+                                    Рассчитать
+                                </button>
+                            </div>
+
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
